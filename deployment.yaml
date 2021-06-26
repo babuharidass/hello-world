@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: equal-experts-sample
+  namespace: platform
+  labels:
+    app: equal-experts-sample
+    team: platform-team
+    name: equal-experts-sample
+spec:
+  selector:
+    matchLabels:
+      app: equal-experts-sample
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: equal-experts-sample
+        team: platform-team
+        name: equal-experts-sample
+    spec:
+      serviceAccountName: equal-experts-sample-sa
+      containers:
+        - name: equal-experts-sample
+          image: application/equal-experts-sample
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+

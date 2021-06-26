@@ -1,0 +1,13 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: platform
+  name: equal-experts-sample-role
+  labels:
+    app : equal-experts-sample
+    team: platform-team
+    name: equal-experts-sample
+rules:
+  - apiGroups: [""]
+    resources: ["namespace", "pods", "endpoints", "events", "configmaps", "secrets"]
+    verbs: ["get", "watch", "list"]
